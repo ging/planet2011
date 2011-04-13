@@ -2,7 +2,12 @@ require 'test_helper'
 
 class TypesControllerTest < ActionController::TestCase
   setup do
-    @type = types(:one)
+    @type = types(:one)   # Carga de fixtures site.yml, entrada :one
+	@update = {           # Añadido: creamos un hash de parametros distintos
+      :name         => 'AnotherType',
+      :description  => 'AnotherText',
+    }
+
   end
 
   test "should get index" do
@@ -18,7 +23,7 @@ class TypesControllerTest < ActionController::TestCase
 
   test "should create type" do
     assert_difference('Type.count') do
-      post :create, :type => @type.attributes
+      post :create, :type => @update      # Se cambia por @update
     end
 
     assert_redirected_to type_path(assigns(:type))
@@ -35,7 +40,7 @@ class TypesControllerTest < ActionController::TestCase
   end
 
   test "should update type" do
-    put :update, :id => @type.to_param, :type => @type.attributes
+    put :update, :id => @type.to_param, :type => @update      # Se cambia por @update
     assert_redirected_to type_path(assigns(:type))
   end
 

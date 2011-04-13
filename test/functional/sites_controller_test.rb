@@ -2,7 +2,16 @@ require 'test_helper'
 
 class SitesControllerTest < ActionController::TestCase
   setup do
-    @site = sites(:one)
+    @site = sites(:one)   # Carga de fixtures site.yml, entrada :one
+	@update = {           # Añadido: creamos un hash de parametros distintos
+      :name         => 'AnotherSite',
+      :description  => 'AnotherText',
+	  :type_id      => 1,
+      :latitude     => 9,
+	  :longitude    => 9,
+	  :zoom         => 1,
+      :image_url    => 'MySite.png'
+    }
   end
 
   test "should get index" do
@@ -18,7 +27,7 @@ class SitesControllerTest < ActionController::TestCase
 
   test "should create site" do
     assert_difference('Site.count') do
-      post :create, :site => @site.attributes
+      post :create, :site => @update      # Se cambia por @update
     end
 
     assert_redirected_to site_path(assigns(:site))
@@ -35,7 +44,7 @@ class SitesControllerTest < ActionController::TestCase
   end
 
   test "should update site" do
-    put :update, :id => @site.to_param, :site => @site.attributes
+    put :update, :id => @site.to_param, :site => @update    # Se cambia por @update
     assert_redirected_to site_path(assigns(:site))
   end
 
