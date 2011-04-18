@@ -1,4 +1,6 @@
 class SitesController < ApplicationController
+  after_filter :count_visit, :only => :show
+
   # GET /sites
   # GET /sites.xml
   def index
@@ -84,5 +86,11 @@ class SitesController < ApplicationController
       format.html { redirect_to(sites_url) }
       format.xml  { head :ok }
     end
+  end
+
+  private
+
+  def count_visit
+    @site.increment!(:visits)
   end
 end
