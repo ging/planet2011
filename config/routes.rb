@@ -1,5 +1,7 @@
 Planet::Application.routes.draw do
 
+  devise_for :users
+
   get "planet/index"
 
   get "planet/contact"
