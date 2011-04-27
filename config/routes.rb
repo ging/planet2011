@@ -1,6 +1,7 @@
 Planet::Application.routes.draw do
 
   devise_for :users
+  resources :users
 
   get "planet/index"
 
