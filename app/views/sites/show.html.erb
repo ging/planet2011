@@ -27,5 +27,7 @@
 </div> 
 
 <p />
-<%= link_to 'Edit', edit_site_path(@site) %> |
+<% if @site.user == current_user %>
+  <%= link_to('Edit', edit_site_path(@site)) %> |
+<% end %>
 <%= link_to 'Back', sites_path %>
