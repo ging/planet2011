@@ -19,6 +19,16 @@
       <%= link_to "Home", planet_index_path %><br /> 
       <%= link_to "Tipos",  types_path %><br /> 
       <%= link_to "Sitios", sites_path %><br /> 
+
+				<div id="lista_tipos">
+					<ul>
+						<% Type.all.each do |t| %>						
+							<li>
+								<%= link_to t.name, type_sites_path(params[:type_id] = t.id) %>
+							</li>
+						<% end %>
+					</ul>
+				</div>
       <%= link_to "Contact", planet_contact_path %>
     </div> 
     <div id="main"> 
