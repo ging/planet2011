@@ -107,6 +107,11 @@
   color: #bfb;
   font-size: small;
 }
+
+#lista_tipos ul {
+	padding-left: 1em;
+	color: #bfb;
+}
 /* END:mainlayout */
 
 /* An entry in the store catalog (no utilizados de momento) */

@@ -5,8 +5,10 @@ class SitesController < ApplicationController
 
    if params[:type_id].nil? or params[:type_id].empty?
       @sites = Site.all
+			@title = "Listing All Sites"
    else
       @sites = Type.find(params[:type_id]).sites
+			@title = "Listing Sites: " + Type.find(params[:type_id]).name
    end
 
     respond_to do |format|
